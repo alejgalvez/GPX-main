@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/support.css' />
+    <link rel='stylesheet' href='/stylesheets/auth.css' />
+    <link rel='icon' type='image/png' href='/images/LogoGPX.png'>
+</head>
+
+<body class="support-page">
+    <%- include('partials/header') %>
+
+    <div class="support-content">
+        <div class="container">
+            <h2 class="section-title">Cambiar / Desvincular número de teléfono</h2>
+
+            <% if (locals.error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+            <% if (locals.success) { %>
+                <div class="success-message" style="background: rgba(0,200,100,0.08); padding:12px; border-radius:8px; margin-bottom:16px;"> <%= success %> </div>
+            <% } %>
+
+            <div class="auth-box phone-bind" style="max-width:720px; margin:0; background:transparent; box-shadow:none; border:none; padding:0;">
+                <!-- Si existe número: mostrarlo (sin fondo). Si no existe: mostrar formulario rápido para vincular -->
+                <% if (user && user.phone) { %>
+                <form action="/support/change-phone" method="POST">
+                    <div class="form-group">
+                        <label>Teléfono actual</label>
+                        <input type="text" value="<%= (user.country_code || '') + ' ' + user.phone %>" readonly class="no-bg-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nuevo número de teléfono</label>
+                        <div class="phone-field">
+                            <select name="country_code" required class="country-select">
+                                <option value="+34" <%= user.country_code === '+34' ? 'selected' : '' %>>🇪🇸 +34</option>
+                                <option value="+44" <%= user.country_code === '+44' ? 'selected' : '' %>>🇬🇧 +44</option>
+                            </select>
+                            <input type="tel" name="phone" placeholder="612345678" pattern="[0-9]{6,15}">
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:12px;">
+                        <button type="submit" class="btn btn-primary">Guardar nuevo teléfono</button>
+                        <button type="submit" name="action" value="unlink" class="btn btn-outline" style="background:#fff; color:#000;">Desvincular número</button>
+                    </div>
+                </form>
+                <% } else { %>
+                <div class="form-group">
+                    <label>Teléfono actual</label>
+                    <input type="text" value="No hay número asociado" readonly class="no-bg-input">
+                </div>
+
+                <!-- Formulario para vincular número cuando no hay ninguno asociado -->
+                <form action="/support/change-phone" method="POST" style="margin-top:16px;">
+                    <div class="form-group">
+                        <label>Vincular un número</label>
+                        <div class="phone-field">
+                            <select name="country_code" required class="country-select">
+                                <option value="+34">🇪🇸 +34</option>
+                                <option value="+44">🇬🇧 +44</option>
+                            </select>
+                            <input type="tel" name="phone" placeholder="612345678" required pattern="[0-9]{6,15}">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary">Vincular número</button>
+                    </div>
+                </form>
+                <% } %>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+
+</html>

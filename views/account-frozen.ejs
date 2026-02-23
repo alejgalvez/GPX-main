@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/support.css' />
+</head>
+<body class="support-page white-layout">
+  <%- include('partials/header') %>
+  <div class="container support-content">
+    <div class="support-panel">
+      <div class="support-card">
+        <h1 class="support-card-title">Cuenta congelada</h1>
+        <p class="support-card-desc">Tu cuenta está actualmente en pausa. Mientras esté congelada no podrás acceder a las secciones protegidas. Si deseas reactivarla, pulsa el botón.</p>
+        <form action="/support/unfreeze-account" method="POST" style="margin-top:18px;">
+          <button class="btn btn-primary" type="submit">Reactivar cuenta</button>
+        </form>
+        <p class="muted" style="margin-top:16px;">Contacta con soporte si necesitas ayuda para reactivar tu cuenta.</p>
+      </div>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+</body>
+</html>

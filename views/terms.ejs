@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="icon" type="image/png" href="/images/LogoGPX.png">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <main class="container" style="padding: 60px 0; max-width: 1100px;">
+            <section style="margin-bottom: 32px;">
+                <h1 style="font-size: 32px; margin-bottom: 8px;">Condiciones de uso</h1>
+                <p style="color: var(--text-muted); max-width: 800px;">
+                    Las presentes Condiciones de uso regulan el acceso y la utilización de la plataforma Galpe
+                    Exchange (en adelante, “GPX”). Al registrarte y operar en GPX aceptas íntegramente estos términos.
+                </p>
+            </section>
+
+            <section style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 32px;">
+                <div>
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">1. Aceptación de los términos</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                        Al registrarte y utilizar GPX, declaras que tienes capacidad legal para contratar y que has
+                        leído, entendido y aceptado estas Condiciones de uso. Si no estás de acuerdo con alguno de los
+                        puntos aquí recogidos, debes abstenerte de utilizar la plataforma.
+                    </p>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">2. Cuenta y seguridad</h2>
+                    <ul style="color: var(--text-muted); font-size: 14px; padding-left: 18px; list-style: disc; margin-bottom: 16px;">
+                        <li>Eres responsable de mantener la confidencialidad de tus credenciales.</li>
+                        <li>Debes avisar si detectas cualquier acceso no autorizado o sospechoso en tu cuenta.</li>
+                        <li>No está permitido compartir cuentas entre varias personas.</li>
+                    </ul>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">3. Uso permitido de la plataforma</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                        GPX está destinada exclusivamente a la gestión y negociación de los activos digitales
+                        admitidos en cada momento. Queda estrictamente prohibido utilizar la plataforma para realizar
+                        actividades ilícitas, fraudulentas o contrarias a la normativa vigente, incluyendo el
+                        blanqueo de capitales o la financiación del terrorismo.
+                    </p>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">4. Riesgos del mercado</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                        La operativa con criptomonedas y otros activos digitales conlleva un alto nivel de riesgo,
+                        pudiendo sufrir variaciones bruscas de precio e incluso la pérdida total del capital
+                        invertido. Operar en GPX implica que comprendes y aceptas estos riesgos y que actúas bajo tu
+                        exclusiva responsabilidad. GPX no ofrece asesoramiento financiero ni garantiza rentabilidad
+                        alguna.
+                    </p>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">5. Modificaciones</h2>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        Nos reservamos el derecho de modificar estas Condiciones de uso en cualquier momento para
+                        adaptarlas a cambios normativos, técnicos o de funcionamiento del servicio. Notificaremos las
+                        actualizaciones relevantes a través de la plataforma o en la sección de <a href="/news"
+                            style="color: var(--primary-color);">Noticias y anuncios</a>, y el uso continuado de GPX
+                        tras su publicación implicará la aceptación de las nuevas condiciones.
+                    </p>
+                </div>
+
+                <aside style="background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); height: fit-content;">
+                    <h3 style="font-size: 16px; margin-bottom: 8px;">Información adicional</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 12px;">
+                        Además de estas Condiciones de uso, podrás encontrar información complementaria sobre
+                        tratamiento de datos personales en nuestra <a href="/privacy"
+                            style="color: var(--primary-color);">Política de privacidad</a>.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        En caso de discrepancia entre estas Condiciones y la normativa imperativa que resulte
+                        aplicable, prevalecerá siempre dicha normativa.
+                    </p>
+                </aside>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>
+

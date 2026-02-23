@@ -1,0 +1,73 @@
+<header>
+  <div class="header-content">
+    <a href="/" class="logo">
+      <img src="/images/LogoGPX.png" alt="GPX Logo">
+    </a>
+    <nav>
+      <ul>
+        <% if (locals.user) { %>
+          <!-- Usuario autenticado -->
+          <li><a href="/deposit">Añadir fondos</a></li>
+          <li><a href="/dashboard">Panel</a></li>
+          <li><a href="/market">Mercado</a></li>
+          <li><a href="/support">Soporte</a></li>
+          <li><a href="/contact">Contacto</a></li>
+          <% } else { %>
+            <!-- Usuario NO autenticado -->
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/market">Mercado</a></li>
+            <li><a href="/support">Soporte</a></li>
+            <li><a href="/contact">Contacto</a></li>
+            <% } %>
+      </ul>
+    </nav>
+    <div class="user-actions">
+      <% if (locals.user) { %>
+        <!-- Usuario autenticado -->
+        <div class="user-profile">
+          <span class="user-email">
+            <%= user.email || 'Usuario' %>
+          </span>
+          <a href="/auth/logout" class="btn btn-outline btn-logout">Cerrar Sesión</a>
+        </div>
+        <% } else { %>
+          <!-- Usuario NO autenticado -->
+          <a href="/register" class="btn btn-outline btn-register">Registrarse</a>
+          <a href="/login" class="btn btn-primary btn-login">Iniciar Sesión</a>
+          <% } %>
+    </div>
+  </div>
+</header>
+<style>
+  /* Oculta la barra superior de Google Translate y evita el desplazamiento del body */
+  iframe.goog-te-banner-frame { display: none !important; }
+  .goog-te-banner-frame { display: none !important; }
+  .skiptranslate { display: none !important; }
+  body { top: 0px !important; }
+</style>
+<script>
+  (function() {
+    function removeGoogleTranslateBar() {
+      var frame = document.querySelector('iframe.goog-te-banner-frame');
+      if (frame) frame.style.display = 'none';
+      var skip = document.querySelector('.skiptranslate');
+      if (skip) skip.style.display = 'none';
+      // Asegura que la página no quede desplazada hacia abajo
+      try { document.body.style.top = '0px'; } catch (e) {}
+    }
+
+    // Ejecutar en carga y observar cambios dinámicos (el widget inyecta elementos tras cargar)
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      removeGoogleTranslateBar();
+    } else {
+      document.addEventListener('DOMContentLoaded', removeGoogleTranslateBar);
+    }
+
+    var observer = new MutationObserver(function() { removeGoogleTranslateBar(); });
+    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+
+    // Llamadas adicionales por si viene con retardo
+    setTimeout(removeGoogleTranslateBar, 500);
+    setTimeout(removeGoogleTranslateBar, 1500);
+  })();
+</script>

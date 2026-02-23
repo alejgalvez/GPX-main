@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="icon" type="image/png" href="/images/LogoGPX.png">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <main class="container" style="padding: 60px 0; max-width: 1100px;">
+            <section style="margin-bottom: 32px;">
+                <h1 style="font-size: 32px; margin-bottom: 8px;">Noticias y anuncios</h1>
+                <p style="color: var(--text-muted); max-width: 800px;">
+                    Mantente al día de las últimas novedades de Galpe Exchange: lanzamientos de producto, mejoras de
+                    seguridad y comunicaciones importantes sobre el funcionamiento de la plataforma.
+                </p>
+            </section>
+
+            <section style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 32px;">
+                <!-- Listado de noticias -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <article style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">Comunicado interno · 2025</span>
+                        <h2 style="font-size: 20px; margin: 8px 0;">Lanzamiento del panel de usuario avanzado</h2>
+                        <p style="color: var(--text-muted); font-size: 14px;">
+                            Presentamos una versión mejorada del panel donde puedes ver tu balance, activos y
+                            movimientos recientes en un solo vistazo. El nuevo diseño está pensado para facilitar la
+                            toma de decisiones y ofrecer una experiencia de trading más profesional.
+                        </p>
+                    </article>
+
+                    <article style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">Actualización de producto</span>
+                        <h2 style="font-size: 20px; margin: 8px 0;">Nueva sección de mercado con ganadores y perdedores</h2>
+                        <p style="color: var(--text-muted); font-size: 14px;">
+                            La página de mercado ahora muestra listados de monedas con mayor subida y caída en 24
+                            horas, así como accesos directos a la operativa de cada activo. Esta funcionalidad mejora
+                            la visibilidad del mercado y te ayuda a detectar oportunidades con mayor rapidez.
+                        </p>
+                    </article>
+
+                    <article style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">Seguridad</span>
+                        <h2 style="font-size: 20px; margin: 8px 0;">Mejoras en flujos de recuperación de cuenta</h2>
+                        <p style="color: var(--text-muted); font-size: 14px;">
+                            Hemos incorporado vistas dedicadas para cambio de correo, teléfono y restablecimiento de
+                            contraseña, así como mejoras internas en los flujos de verificación. El objetivo es que
+                            puedas recuperar el acceso a tu cuenta de forma rápida y segura si surge cualquier
+                            incidencia.
+                        </p>
+                    </article>
+                </div>
+
+                <!-- Sidebar -->
+                <aside style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Estado del servicio</h3>
+                        <p style="color: var(--text-muted); font-size: 14px;">
+                            Todas las funciones principales de GPX se encuentran operativas. Cualquier incidencia,
+                            mantenimiento programado o actualización relevante de servicio se comunicará por este
+                            canal con la mayor antelación posible.
+                        </p>
+                    </div>
+                    <div style="background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);">
+                        <h3 style="font-size: 16px; margin-bottom: 8px;">Enlaces útiles</h3>
+                        <ul style="color: var(--text-muted); font-size: 14px; padding-left: 18px; list-style: disc;">
+                            <li><a href="/support" style="color: var(--primary-color);">Centro de ayuda</a></li>
+                            <li><a href="/market" style="color: var(--primary-color);">Ver mercado</a></li>
+                            <li><a href="/about" style="color: var(--primary-color);">Sobre Galpe Exchange</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>
+

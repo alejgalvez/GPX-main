@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="icon" type="image/png" href="/images/LogoGPX.png">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="/images/FondoPagina.mp4" type="video/mp4">
+    </video>
+
+    <%- include('partials/header') %>
+
+        <div class="container dashboard-container">
+
+            <div class="balance-card">
+                <div class="balance-info">
+                    <div class="balance-header">
+                        <h2>Tu balance</h2>
+                        <button type="button" class="balance-eye-toggle" aria-label="Ocultar o mostrar saldo">
+                            <img id="balance-eye-icon" src="/images/panel-icon.svg" alt="panel icon" onerror="this.style.display='none'" />
+                            <span class="balance-eye-fallback" style="display:none;">👁️</span>
+                        </button>
+                    </div>
+                    <% if (locals.user && user.balance) { %>
+                        <div class="balance-amount">
+                            <span class="balance-value"></span>
+                            <span class="balance-masked">••••••••</span>
+                        </div>
+                        <div class="balance-controls">
+                            <label class="balance-currency-label" for="balance-currency-select">Moneda:</label>
+                            <select id="balance-currency-select" class="balance-currency-select">
+                                <option value="EUR">EUR</option>
+                                <% if (locals.coins && coins && coins.length) { %>
+                                    <% coins.forEach(function(coin) { if (coin.symbol !== 'EUR') { %>
+                                        <option value="<%= coin.symbol %>"><%= coin.symbol %></option>
+                                    <% } }) %>
+                                <% } %>
+                            </select>
+                        </div>
+                        <% } else { %>
+                            <div class="balance-amount">
+                                <span class="balance-value">0.00 €</span>
+                                <span class="balance-masked">••••••••</span>
+                            </div>
+                            <div class="balance-controls">
+                                <label class="balance-currency-label" for="balance-currency-select">Moneda:</label>
+                                <select id="balance-currency-select" class="balance-currency-select">
+                                    <option value="EUR">EUR</option>
+                                    <% if (locals.coins && coins && coins.length) { %>
+                                        <% coins.forEach(function(coin) { if (coin.symbol !== 'EUR') { %>
+                                            <option value="<%= coin.symbol %>"><%= coin.symbol %></option>
+                                        <% } }) %>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <% } %>
+                </div>
+                <div class="action-buttons">
+                    <a href="/deposit" class="btn btn-action primary">Depositar</a>
+                    <a href="/withdraw" class="btn btn-action">Retirar</a>
+                </div>
+            </div>
+
+            <!-- Chart placeholder line removed -->
+
+            <h3 class="section-title">Mis activos</h3>
+
+            <table class="assets-table">
+                <thead>
+                    <tr>
+                        <th>Mis activos</th>
+                        <th>Precio de la moneda</th>
+                        <th>Cambio en 24h</th>
+                        <th>Operar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (locals.assets && assets.length> 0) { %>
+                        <% assets.forEach(function(asset) { %>
+                            <tr>
+                                <td>
+                                    <div class="coin-name">
+                                        <%- include('partials/coin-icon', { symbol: asset.symbol }) %>
+                                            <%= asset.name %>
+                                    </div>
+                                </td>
+                                <td>
+                                    <%= asset.price_eur %> €
+                                </td>
+                                <td class="<%= asset.change_24h >= 0 ? 'text-green' : 'text-red' %>">
+                                    <%= asset.change_24h>= 0 ? '+' : '' %><%= asset.change_24h %> %
+                                </td>
+                                <td><a href="#" class="text-primary">Operar</a></td>
+                            </tr>
+                            <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4" class="empty-state">No tienes activos.</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+
+
+            <section class="ai-dashboard-section">
+                <div class="ai-card">
+                    <div class="ai-card-header">
+                        <div>
+                            <div class="ai-tag">Galpe AI Analyst</div>
+                            <h4 class="ai-title">Análisis automático del mercado</h4>
+                        </div>
+                    </div>
+                    <p class="ai-description">
+                        Nuestra IA analiza en tiempo real las noticias más recientes del sector crypto y genera un
+                        breve informe con el sentimiento predominante del mercado.
+                    </p>
+                    <div class="ai-actions">
+                        <button onclick="consultarIA()" id="btn-ia" class="ai-button">
+                         Analizar mercado
+                        </button>
+                    </div>
+                    <div id="resultado-ia" class="ai-result"></div>
+                </div>
+            </section>
+
+        </div>
+
+        <%- include('partials/footer') %>
+
+        <%
+            const uiBalances = {};
+            uiBalances['EUR'] = (locals.user && user.balance && user.balance.eur) ? user.balance.eur : 0;
+            if (locals.user && user.balance && user.balance.btc) {
+                uiBalances['BTC'] = user.balance.btc;
+            }
+            if (locals.user && user.assets && user.assets.length) {
+                user.assets.forEach(function(asset) {
+                    uiBalances[asset.symbol] = asset.amount || 0;
+                });
+            }
+            if (locals.coins && coins && coins.length) {
+                coins.forEach(function(coin) {
+                    if (typeof uiBalances[coin.symbol] !== 'number') {
+                        uiBalances[coin.symbol] = 0;
+                    }
+                });
+            }
+        %>
+
+        <div id="balance-data" data-balances='<%- JSON.stringify(uiBalances) %>'></div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var eyeBtn = document.querySelector('.balance-eye-toggle');
+                var valueEl = document.querySelector('.balance-value');
+                var maskedEl = document.querySelector('.balance-masked');
+                var selectEl = document.getElementById('balance-currency-select');
+
+                if (!eyeBtn || !valueEl || !maskedEl || !selectEl) {
+                    return;
+                }
+
+                var balances = {};
+                var balanceDataEl = document.getElementById('balance-data');
+                if (balanceDataEl && balanceDataEl.dataset && balanceDataEl.dataset.balances) {
+                    try {
+                        balances = JSON.parse(balanceDataEl.dataset.balances);
+                    } catch (e) {
+                        balances = {};
+                    }
+                }
+
+                function formatBalance(symbol) {
+                    var amount = balances[symbol] || 0;
+                    if (symbol === 'BTC') {
+                        return amount.toFixed(8) + ' BTC';
+                    }
+                    if (symbol === 'EUR') {
+                        return amount.toFixed(2) + ' €';
+                    }
+                    return amount.toFixed(8) + ' ' + symbol;
+                }
+
+                function updateDisplay() {
+                    var symbol = selectEl.value || 'EUR';
+                    valueEl.textContent = formatBalance(symbol);
+                }
+
+                var isHidden = false;
+                maskedEl.style.display = 'none';
+
+                eyeBtn.addEventListener('click', function () {
+                    isHidden = !isHidden;
+                    if (isHidden) {
+                        valueEl.style.display = 'none';
+                        maskedEl.style.display = 'inline-block';
+                        eyeBtn.classList.add('is-hidden');
+                    } else {
+                        valueEl.style.display = 'inline-block';
+                        maskedEl.style.display = 'none';
+                        eyeBtn.classList.remove('is-hidden');
+                    }
+                });
+
+                selectEl.addEventListener('change', updateDisplay);
+
+                updateDisplay();
+            });
+
+            // Lógica para conectar con la IA (noticias en dashboard)
+            window.consultarIA = async function consultarIA() {
+                const btn = document.getElementById('btn-ia');
+                const output = document.getElementById('resultado-ia');
+
+                if (!btn || !output) return;
+
+                btn.disabled = true;
+                btn.innerHTML = "📡 Analizando datos...";
+                btn.style.opacity = "0.7";
+                output.style.display = "block";
+                output.innerHTML = "<i>Conectando con los servidores de noticias globales...</i>";
+
+                try {
+                    const response = await fetch('/api/ai-analysis');
+                    const data = await response.json();
+
+                    if (data.success) {
+                        output.innerHTML = "<strong>📊 INFORME GALPE:</strong><br><br>" + data.analysis;
+                    } else {
+                        output.innerHTML = "❌ Error: " + (data.error || 'No se pudo obtener el análisis.');
+                    }
+                } catch (error) {
+                    output.innerHTML = "❌ Error de conexión. Inténtalo de nuevo.";
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = "⚡ Analizar mercado ahora";
+                    btn.style.opacity = "1";
+                }
+            }
+        </script>
+
+</body>
+
+</html>

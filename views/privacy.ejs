@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="icon" type="image/png" href="/images/LogoGPX.png">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <main class="container" style="padding: 60px 0; max-width: 1100px;">
+            <section style="margin-bottom: 32px;">
+                <h1 style="font-size: 32px; margin-bottom: 8px;">Política de privacidad</h1>
+                <p style="color: var(--text-muted); max-width: 800px;">
+                    En Galpe Exchange (“GPX”) nos tomamos muy en serio la protección de tus datos personales. En esta
+                    política te explicamos de forma clara qué información recopilamos, con qué finalidad la utilizamos
+                    y qué derechos puedes ejercer en relación con ella.
+                </p>
+            </section>
+
+            <section style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 32px;">
+                <div>
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">1. Datos que podríamos recopilar</h2>
+                    <ul style="color: var(--text-muted); font-size: 14px; padding-left: 18px; list-style: disc; margin-bottom: 16px;">
+                        <li>Datos de registro: nombre, correo electrónico y contraseña cifrada.</li>
+                        <li>Datos de uso: páginas visitadas, acciones realizadas y tiempos de acceso.</li>
+                        <li>Datos técnicos: dirección IP acotada, tipo de navegador y dispositivo.</li>
+                    </ul>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">2. Finalidad del tratamiento</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                        Utilizaríamos esta información para permitir el acceso a la plataforma, mejorar la
+                        experiencia de usuario, garantizar la seguridad de las sesiones y cumplir con posibles
+                        obligaciones legales en un contexto real.
+                    </p>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">3. Conservación de los datos</h2>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
+                        Conservaremos tus datos personales durante el tiempo estrictamente necesario para cumplir con
+                        las finalidades indicadas y, en su caso, durante los plazos adicionales exigidos por la
+                        normativa aplicable en materia fiscal, contable o de prevención del blanqueo de capitales.
+                    </p>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">4. Derechos de las personas usuarias</h2>
+                    <ul style="color: var(--text-muted); font-size: 14px; padding-left: 18px; list-style: disc; margin-bottom: 16px;">
+                        <li>Acceder a los datos personales almacenados sobre ti.</li>
+                        <li>Solicitar la rectificación o actualización de información inexacta.</li>
+                        <li>Pedir la supresión de los datos cuando ya no sean necesarios.</li>
+                        <li>Limitar u oponerte a determinados tratamientos, en los casos previstos por la ley.</li>
+                    </ul>
+
+                    <h2 style="font-size: 20px; margin-bottom: 10px;">5. Seguridad</h2>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        Aplicamos medidas técnicas y organizativas razonables para proteger tus datos frente a accesos
+                        no autorizados, pérdida, destrucción o alteración accidental, incluyendo el uso de conexiones
+                        seguras y controles de acceso restringido al personal que necesita tratar la información.
+                    </p>
+                </div>
+
+                <aside style="background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); height: fit-content;">
+                    <h3 style="font-size: 16px; margin-bottom: 8px;">Tus derechos</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 12px;">
+                        Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación del tratamiento,
+                        portabilidad y oposición dirigiéndote a nuestro canal de contacto indicado en la plataforma o
+                        a través del formulario de soporte. Te responderemos en los plazos previstos por la normativa
+                        aplicable.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        Si consideras que no hemos tratado tus datos personales de forma adecuada, también tienes
+                        derecho a presentar una reclamación ante la autoridad de control competente en materia de
+                        protección de datos.
+                    </p>
+                </aside>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>
+

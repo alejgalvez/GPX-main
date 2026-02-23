@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/support.css' />
+</head>
+<body class="support-page white-layout">
+  <%- include('partials/header') %>
+  <div class="container support-content">
+    <div class="support-panel">
+      <div class="support-card">
+        <h1 class="support-card-title">Congelar cuenta</h1>
+        <p class="support-card-desc">Al congelar tu cuenta, no podrás acceder a secciones protegidas hasta que la reactives. Esta acción es reversible y bloquea temporalmente el acceso a funciones sensibles.</p>
+        <% if (success) { %>
+          <div class="success-message"><%= success %></div>
+        <% } %>
+        <form action="/support/freeze-account" method="POST">
+          <div style="display:flex; gap:12px; align-items:center; margin-top:18px;">
+            <button class="btn btn-primary" type="submit">Congelar cuenta</button>
+            <a href="/support" class="btn btn-outline" style="background:transparent;">Volver al soporte</a>
+          </div>
+        </form>
+        <p class="muted" style="margin-top:18px;">Si ya está congelada, puedes reactivarla desde la página de cuenta congelada.</p>
+      </div>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+</body>
+</html>

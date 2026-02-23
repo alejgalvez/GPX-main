@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="icon" type="image/png" href="/images/LogoGPX.png">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <main class="container" style="padding: 60px 0; max-width: 1100px;">
+            <section style="margin-bottom: 40px;">
+                <h1 style="font-size: 32px; margin-bottom: 12px;">Sobre Galpe Exchange</h1>
+                <p style="color: var(--text-muted); max-width: 800px;">
+                    Galpe Exchange (GPX) nace con una idea sencilla: acercar el mundo cripto a cualquier persona,
+                    sin menús complicados ni lenguaje técnico innecesario. Somos una plataforma de intercambio de
+                    activos digitales diseñada siguiendo los mismos estándares de seguridad y usabilidad que aplican
+                    las casas de cambio profesionales.
+                </p>
+            </section>
+
+            <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 40px;">
+                <div style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h2 style="font-size: 18px; margin-bottom: 10px;">Nuestra misión</h2>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        Democratizar el acceso al trading de criptomonedas con una experiencia clara, rápida y
+                        transparente, pensada tanto para usuarios nuevos como para traders experimentados.
+                    </p>
+                </div>
+                <div style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h2 style="font-size: 18px; margin-bottom: 10px;">Nuestra visión</h2>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        Convertirnos en una de las plataformas de referencia para operar con activos digitales,
+                        ofreciendo una experiencia de exchange moderna, intuitiva y centrada en el usuario.
+                    </p>
+                </div>
+                <div style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h2 style="font-size: 18px; margin-bottom: 10px;">Nuestros valores</h2>
+                    <ul style="color: var(--text-muted); font-size: 14px; padding-left: 18px; list-style: disc;">
+                        <li>Transparencia en precios y comisiones.</li>
+                        <li>Seguridad como prioridad de diseño.</li>
+                        <li>Soporte cercano y lenguaje claro.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section style="margin-bottom: 40px;">
+                <h2 style="font-size: 20px; margin-bottom: 12px;">¿Por qué creamos GPX?</h2>
+                <p style="color: var(--text-muted); font-size: 14px;">
+                    GPX se ha creado para ofrecer un entorno de trading claro y fiable, donde puedas seguir el mercado
+                    en tiempo real, consultar tu cartera y ejecutar operaciones sobre los activos disponibles de forma
+                    sencilla y segura.
+                </p>
+            </section>
+
+            <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+                <div style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-size: 16px; margin-bottom: 8px;">Tecnología</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        GPX está construida sobre tecnologías web modernas y una base de datos optimizada para ofrecer
+                        una experiencia fluida, estable y preparada para escenarios de alta demanda.
+                    </p>
+                </div>
+                <div style="background: var(--card-bg); padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05);">
+                    <h3 style="font-size: 16px; margin-bottom: 8px;">Seguridad</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">
+                        Aplicamos buenas prácticas en gestión de sesiones, control de acceso y tratamiento de datos
+                        para que puedas operar con la máxima tranquilidad posible dentro de la plataforma.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>
+
